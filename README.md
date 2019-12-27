@@ -15,6 +15,8 @@ This application is a todo list built with react and firebase.
 
 Application deployed using Netlify
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/39abe251-c82e-4c26-897d-e695bf636935/deploy-status)](https://app.netlify.com/sites/blake-todo-app/deploys)
+
 [Preview](https://blake-todo-app.netlify.com)
 
 ## About The Creator
