@@ -1,24 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+// Import sass file
+import './App.scss';
+
+// Import React Router
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+// Import Pages
+import Home from './components/pages/Home';
+
+import LoginPage from './components/pages/LoginPage';
+
+import TodoPage from './components/pages/TodoPage';
+
+import NotFound from './components/pages/NotFound';
+
+import AdminPage from './components/pages/AdminPage';
+
+// Import Routes
+import { home, login, todos, admin } from './constants/routes';
+
+const App = () => {
+
+  // TODO: Make Website responsive
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+
+          <Route exact path={home} component={Home} />
+
+          <Route exact path={login} component={LoginPage} />
+
+          <Route exact path={todos} component={TodoPage} />
+
+          <Route exact path={admin} component={AdminPage} />
+
+          <Route component={NotFound} />
+
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -1,0 +1,658 @@
+// Import Fonts
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+// Mixins
+@mixin shadow {
+  box-shadow: 0px 0px 22.5px rgba(0,0,0,0.025);
+}
+
+// Variables
+$primaryGradient: linear-gradient(135deg, #d0830e 0%, #ffc400 100%);
+$lighterGradient: linear-gradient(135deg, #e1941f 0%, #ffd511 100%);
+$greyGradient: linear-gradient(135deg, #757575 0%, #aaaaaa 100%);
+$lightGreyGradient: linear-gradient(135deg, #858585 0%, #bbbbbb 100%);
+$darkGrey: #353535;
+$primaryColor: #E09909;
+
+// Spinner Animation
+@keyframes spinner {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+
+  body {
+    background-image: $primaryGradient;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:100vh;
+    width:100vh;
+    overflow: hidden;
+    font-family: 'Helvetica', sans-serif;
+
+    button:focus {
+      outline: none;
+      background: $lighterGradient;
+    }
+
+    .divider {
+      width: 150px; 
+      height: 6px;
+      background: $primaryGradient;
+    }
+
+    .sign-up, .login, .not-found {
+      background: #fff;
+      width:475px;
+      height:500px;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%, -50%);
+      border-radius: 20px;
+      padding: 2.5em 2em;
+      @include shadow();
+
+      &.not-found {
+        height: 225px;
+      }
+
+      .title {
+        font-family: 'Bebas Neue', sans-serif;
+        color: $darkGrey;
+        font-size: 2.125rem;
+        letter-spacing: .075em;
+        font-weight: lighter;
+        padding-bottom: .55em;
+      }
+      
+      .sub-text {
+        color: lighten($darkGrey, 10%);
+        font-size: 1.05rem;
+        padding-top: 16.25px;
+      }
+
+      .link {
+        color: $primaryColor;
+        text-decoration:none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .form {
+        width: 100%;
+        margin: 32.5px 0;
+
+        .form-group {
+          width: 100%;
+
+          &:not(:first-of-type) {
+            margin-top: 25px;
+          }
+
+          .input {
+            border:none;
+            border-bottom: 3px solid $darkGrey;
+            width: 100%;
+            font-size: 1.125rem;
+            padding-bottom: 10px;
+
+            &::placeholder {
+              color: $darkGrey;
+              opacity: 1;
+            }
+
+            &:focus {
+              outline: none;
+              color: $primaryColor;
+              border-bottom-color: $primaryColor;
+
+              &::placeholder {
+                color: $primaryColor;
+              }
+            }
+
+            &.error {
+              border-bottom-color: #f00;
+              color: #f00;
+
+              &::placeholder {
+                color: #f00;
+              }
+            }
+          }
+
+          .submit-btn {
+            color:#fff;
+            background: $primaryGradient;
+            height:40px;
+            width:100%;
+            border:none;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            cursor:pointer;
+
+            &:hover {
+              background: $lighterGradient;
+            }
+          }
+        }
+      }
+    }
+
+    .todoPage {
+
+      .overlay {
+        width: 100vw;
+        height: 100vh;
+        position:absolute;
+        top: 0;
+        background: rgb(0,0,0);
+        z-index: 2;
+      }
+
+      .add-todo, .confirmation {
+        background: #fff;
+        width:600px;
+        height:275px;
+        position:absolute;
+        left:50%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+        padding: 2.5em 2em;
+        @include shadow();
+        z-index: 3;
+        transition: 1s ease-in-out;
+        
+        .close-icon {
+          font-size: 2rem;
+          color: #555;
+          position:absolute;
+          right: 30px;
+          top: 30px;
+          cursor: pointer;
+          transition: .25s ease-in-out;
+
+          &:hover {
+            color: #f00;
+          }
+        }
+        .title {
+          font-family: 'Bebas Neue', sans-serif;
+          color: $darkGrey;
+          font-size: 2.125rem;
+          letter-spacing: .075em;
+          font-weight: lighter;
+          padding-bottom: .55em;
+        }
+
+        .sub-text {
+          color: lighten($darkGrey, 10%);
+          font-size: 1.05rem;
+          padding: 25px 0;
+        }
+        
+        .btn-group {
+          margin-top: 10px;
+        }
+
+        .cancel, .add-btn, .confirm-btn {
+          color:#fff;
+          height:40px;
+          width:25%;
+          border:none;
+          border-radius: 5px;
+          text-transform: uppercase;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.1rem;
+          letter-spacing: 0.05em;
+          cursor:pointer;
+        }
+
+        .cancel {
+          background: $greyGradient;
+          margin-left: 20px;
+
+          &:hover {
+            background: $lightGreyGradient;
+          }
+        }
+
+        .add-btn, .confirm-btn {
+          background: $primaryGradient;  
+
+          &:hover {
+              background: $lighterGradient;
+          }
+
+          span {
+            font-size: 1.75rem;
+            position:relative;
+            top: 2.5px;
+            left: 5px;
+          }
+        }
+
+        .todo-input {
+          border:none;
+            border-bottom: 3px solid $darkGrey;
+            width: 70%;
+            font-size: 1.125rem;
+            padding-bottom: 10px;
+            margin-right: 10px;
+
+            &::placeholder {
+              color: $darkGrey;
+              opacity: 1;
+            }
+
+            &:focus {
+              outline: none;
+              color: $primaryColor;
+              border-bottom-color: $primaryColor;
+
+              &::placeholder {
+                color: $primaryColor;
+              }
+            }
+
+            &.error {
+              border-bottom-color: #f00;
+              color: #f00;
+
+              &::placeholder {
+                color: #f00;
+              }
+            }
+        }
+      }
+      .container {
+        width: 75vw;
+        height: 60vh;
+        margin-top: 20vh;
+        margin-left: 12.5vw;
+        position: relative;
+
+        
+      .todo-content {
+        height: 100%;
+        width: 70%;
+        background:#fff;
+        border-radius:20px;
+        @include shadow();
+        padding: 2.25em;
+
+        .header {
+            font-family: 'Bebas Neue', sans-serif;
+            color: $darkGrey;
+            font-size: 2.125rem;
+            letter-spacing: .075em;
+            font-weight: lighter;
+            padding-bottom: .25em;
+        }
+
+        .pagination-controls {
+          height: 50px;
+          position:relative;
+          left:50%;
+          top: 20px;
+          transform: translateX(-50%);
+
+          .arrow {
+            float: left;
+            padding: 5px 7.5px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+
+            &:hover {
+              color: #999;
+            }
+
+            &.disabled {
+              color: #ccc;
+              cursor: default;
+
+              &:hover {
+                color: #ccc;
+              }
+            }
+          }
+
+          .p-btns {
+            list-style: none;
+
+            .p-btn {
+              float:left;
+              padding: 5px 7.5px;
+              color: #242424;
+              font-size: 20px;
+              cursor: pointer;
+              transition: .2s ease-in-out;
+
+              &:hover {
+                color: #999;
+              }
+
+              &.active {
+                color: $primaryColor;
+                cursor: default;
+
+                &:hover {
+                  color: $primaryColor;
+                }
+              }
+            }
+          }
+        }
+
+        .todo-list {
+          margin-top: 4em;
+          height: 60%;
+          overflow-y: hidden;
+          position:relative;
+          
+          .spinner {
+            background: transparent;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            border: lighten($primaryColor, 10%) 3px solid;
+            border-left-color:transparent;
+            border-right-color:transparent;
+            position: absolute;
+            left:calc(50% - 37.5px);
+            top:calc(50% - 37.5px);
+            transform: translate(-50%, -50%);
+            animation: spinner 1.5s infinite;
+          }
+
+          .todo {
+            position:relative;
+            height: 30px;
+            margin: 30px 0px;
+            display:grid;
+            grid-template-columns: 10fr 1fr;
+
+            &:first-of-type {
+              margin-top: 0;
+            }
+
+            .title {
+              font-weight: lighter;
+              font-size: 1.75rem;
+              cursor: pointer;
+              width: calc(100% - (3rem + 50px) );
+
+              &:hover {
+                text-decoration: line-through;
+              }
+            }
+
+            .checkbox-container {
+              display: block;
+              position: relative;
+              padding-left: 35px;
+              margin-top: 10px;
+              cursor: pointer;
+              font-size: 22px;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+
+
+              &:hover {
+                .checkbox ~ .checkmark {
+                  background-color: #ddd;
+                }
+              }
+
+              .checkbox {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                height: 0;
+                width: 0;
+
+                &:checked ~ .checkmark {
+                  background: $lighterGradient;
+                }
+
+                &:checked ~ .checkmark:after {
+                  display: block;
+                }
+              }
+
+              .checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 25px;
+                width: 25px;
+                background-color: #eee;
+
+                &:after {
+                  content: "";
+                  position: absolute;
+                  display: none;
+                  left: 9px;
+                  top: 5px;
+                  width: 5px;
+                  height: 10px;
+                  border: solid white;
+                  border-width: 0 3px 3px 0;
+                  -webkit-transform: rotate(45deg);
+                  -ms-transform: rotate(45deg);
+                  transform: rotate(45deg);
+                }
+              }
+
+            }
+          }
+        }
+      }
+      }
+
+      .todo-controls {
+        position:relative;
+
+        .control-btn {
+              color:#fff;
+              background: $primaryGradient;
+              height:40px;
+              width:150px;
+              border:none;
+              border-radius: 10px;
+              text-transform: uppercase;
+              font-family: 'Bebas Neue', sans-serif;
+              font-size: 1.1rem;
+              letter-spacing: 0.05em;
+              cursor:pointer;
+              margin: .5em 0px;
+
+              &.disabled {
+                background: $greyGradient;
+                cursor: default;
+
+                &:hover {
+                  background: $greyGradient;
+                }
+              }
+
+              &:hover {
+                background: $lighterGradient;
+              }
+
+              &:last-of-type {
+                position:absolute;
+                right: 0;
+
+              }
+        }
+      }
+    }
+
+    .account-section {
+      background: #fff;
+      position:absolute;
+      right:0;
+      width: 400px;
+      @include shadow();
+      border-radius: 20px;
+      padding: 2em 2em;
+      font-weight: lighter;
+      color: $darkGrey;
+      letter-spacing: .05em;
+
+      .admin-link {
+        color: $primaryColor;
+        text-decoration:none;
+        position:absolute;
+        left:50%;
+        margin-top: 12.5px;
+        transform:translateX(-50%);
+
+        &:hover {
+          text-decoration: underline
+        }
+      }
+
+      .head {
+        width:80%;
+        margin: 0 auto;
+
+        h2 {
+          text-align:center;
+          margin-bottom: 1em;
+        }
+        .user-img {
+          width: 60px;
+          margin-right: 25px;
+        }
+        .user-email {
+          font-size: 1.15rem;
+          position: relative;
+          top: -20px;
+        }
+        .user-id {
+          font-size: .75em;
+          color: lighten($darkGrey, 20%);
+          text-align:center;
+          padding: 5px 5px 5px 0px;
+        }
+      }
+
+      .user-actions {
+        list-style-type: none;
+        width:60%;
+        margin: 50px auto 0 auto;
+
+        .user-action {
+          margin: 1.75em 0;
+
+          &:last-of-type {
+            margin-bottom:0;
+          }
+
+          .action-btn {
+            color:#fff;
+            background: $primaryGradient;
+            height:40px;
+            width:100%;
+            border:none;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            cursor:pointer;
+
+            &:hover {
+              background: $lighterGradient;
+            }
+
+            &:focus {
+              outline: none;
+              background: $lighterGradient;
+            }
+          }
+        }
+      }
+    }
+    
+    .container {
+      width: 75vw;
+      height: 60vh;
+      margin-top: 20vh;
+      margin-left: 12.5vw;
+      position: relative;
+      
+      .dashboard {
+         height: 100%;
+         width: 70%;
+         background:#fff;
+         border-radius:20px;
+         @include shadow();
+         padding: 2.25em;
+
+        .title {
+          font-family: 'Bebas Neue', sans-serif;
+          color: $darkGrey;
+          font-size: 2.125rem;
+          letter-spacing: .075em;
+          font-weight: lighter;
+          padding-bottom: .25em;
+        } 
+
+        .divider {
+          margin-bottom: 1.25em;
+        }
+
+        .grid {
+          display:grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 4em;
+        }
+
+        .stat {
+          background: rgba(36, 26, 26, 0.035);
+          height: 75px;
+          width: 80%;
+          margin: 0 auto;
+          border-left: 5px solid $primaryColor;
+          border-radius: 5px;
+
+          .value, .name {
+            color: #242424;
+            text-align:center;
+          }
+
+          .value {
+            padding: 10px 0px;
+            font-weight:normal;
+            font-size: 1.5rem;
+          }
+
+          .name {
+            font-weight: lighter;
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+}
