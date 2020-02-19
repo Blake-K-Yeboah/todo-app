@@ -10,6 +10,7 @@ This application is a todo list built with react and firebase.
 - Interactive animations built with [react-spring](https://github.com/react-spring/react-spring)
 - Routing Using React Router
 - State Management with [Mobx](https://mobx.js.org/)
+- Custom design built using Sass
 
 ## Preview Application
 
