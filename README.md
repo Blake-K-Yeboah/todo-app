@@ -22,7 +22,7 @@ Application deployed using Netlify
 
 ## About The Creator
 
-My name is Blake and I made this project. Its featured on my [portfolio](https://blakeyeboah.com)
+My name is Blake and I made this project.
 
 Feel free to checkout my other projects!
 
